@@ -1,0 +1,29 @@
+<!-- Nav Bar Start -->
+<div class="navbar navbar-expand-lg bg-dark navbar-dark">
+  <div class="container-fluid">
+    <a href="/" style="font-family: 'Bungee Spice', sans-serif;" class="navbar-brand">Ranangan</a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <div class="navbar-nav ml-auto">
+        <% if (locals.home) { %>
+        <a href="/" class="nav-item nav-link">Home</a>
+        <a href="#about" class="nav-item nav-link">About</a>
+        <a href="#sports" class="nav-item nav-link">Register</a>
+        <a href="/schedule" class="nav-item nav-link">Schedule</a>
+        <a href="#winner" class="nav-item nav-link">Winner</a>
+        <a href="#contact" class="nav-item nav-link">Contact</a>
+        <% } %>
+
+        <% if (locals.schedule) { %>
+        <a href="/" class="nav-item nav-link">Home</a>
+        <a href="/schedule" class="nav-item nav-link">Schedule</a>
+        <a href="#winner" class="nav-item nav-link">Winner</a>
+        <% } %>
+
+      </div>
+    </div>
+  </div>
+</div>

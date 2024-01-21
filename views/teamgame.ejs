@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <%- include("./DPartials/head.ejs") %>
+</head>
+
+<body>
+
+    <%- include("./DPartials/side.ejs") %>
+
+
+
+    <!--Content Start-->
+    <div class="content-start transition ">
+        <div class="container-fluid dashboard">
+
+            <div class="row">
+                <!--Start Alerts-->
+                <div class="col-12 col-md-7">
+                    <div class="form-card">
+                        <form action="/team/schedule" method="post">
+                            <!-- Game Selection -->
+                            <div class="form-group">
+                                <input
+                                    style="background-color: transparent; text-align:center;font-size: larger; font-weight: bold;color: #333;"
+                                    value="<%= sport %>" name="sportName" type="text" class="form-control mt-0"
+                                    readonly />
+                            </div>
+                            <div class="form-group">
+                                <label for="dateTime">Date and Time:</label>
+                                <input name="dateTime" type="datetime-local" class="form-control" id="dateTime"
+                                    required />
+                            </div>
+                            <div class="form-group" id="team1Input">
+                                <label for="team1">Team 1:</label>
+                                <select aria-placeholder="Choose Team 1" class="form-control" id="team1" name="team1">
+                                    <% for( let index = 0; index < registered.length; index++ ) { %>
+                                        <option value="<%= registered[index].teamName %>"><%= registered[index].teamName %></option>
+                                    <% } %>
+                                    <!-- Add more options as needed -->
+                                  </select>
+                            </div>
+
+                            <!-- Team 2 Input (Initially hidden) -->
+                            <div class="form-group" id="team2Input">
+                                <label for="team2">Team 2:</label>
+                                <select aria-placeholder="Choose Team 1" class="form-control" id="team2" name="team2">
+                                    <% for( let index = 0; index < registered.length; index++ ) { %>
+                                        <option value="<%= registered[index].teamName %>"><%= registered[index].teamName %></option>
+                                    <% } %>
+                                    <!-- Add more options as needed -->
+                                  </select>
+                            </div>
+
+                            <!-- Coordinator Name -->
+                            <div class="form-group">
+                                <label for="coordinatorName">Coordinator Name:</label>
+                                <input name="coordinatorName" type="text" class="form-control" id="coordinatorName"
+                                    placeholder="Enter Coordinator Name" required />
+                            </div>
+
+                            <!-- Coordinator Contact Number -->
+                            <div class="form-group">
+                                <label for="coordinatorContact">Coordinator Contact Number:</label>
+                                <input name="coordinatorContact" type="tel" class="form-control" id="coordinatorContact"
+                                    placeholder="Enter Coordinator Contact Number" required />
+                            </div>
+
+                            <div class="text-center">
+                                <!-- Button trigger modal -->
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModal">
+                                    Schedule
+                                </button>
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="exampleModalLabel">Schedule <%= sport %>
+                                                        Event</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                Are you sure to schedule the match?
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">NO</button>
+                                                <button type="submit" class="btn btn-primary">YES</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card">
+                        <div class="card-header">
+                            <h4>Recent Matches</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">Date</th>
+                                            <th scope="col">Sport Name</th>
+                                            <th scope="col">Cordinator Name</th>
+                                            <th scope="col">Team A</th>
+                                            <th scope="col">Team B</th>
+                                            <th scope="col">Winner</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <% for( let index=0; index < winnerList.length; index++ ) { %>
+                                            <tr>
+                                                <th scope="row">
+                                                    <%= winnerList[index].dateTime.toString().slice(0, 24)%>
+                                                </th>
+                                                <td>
+                                                    <%= winnerList[index].sportName %>
+                                                </td>
+                                                <td>
+                                                    <%= winnerList[index].coordinatorName %>
+                                                </td>
+                                                <td>
+                                                    <%= winnerList[index].team1 %>
+                                                </td>
+                                                <td>
+                                                    <%= winnerList[index].team2 %>
+                                                </td>
+                                                <td>
+                                                    <%= winnerList[index].winner %>
+                                                </td>
+                                            </tr>
+                                            <% } %>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-5">
+                    <div class="card">
+                        <div class="card-header font-weight-bold mr-auto">
+                            Scheduled Matches
+                        </div>
+                        <div class="card-body">
+                            <% if (locals.scheduleMatch && scheduleMatch.length> 0) { %>
+                                <% for (let index=0; index < scheduleMatch.length; index++) { %>
+                                    <div style="margin: 5px;" class="card">
+                                        <h1 style="padding: 5px; text-align: center; font-size: 2em;"
+                                            class="card-header">
+                                            <%= scheduleMatch[index].team1 %> &nbsp&nbsp vs &nbsp&nbsp <%=
+                                                    scheduleMatch[index].team2 %>
+                                        </h1>
+                                        <div class="card-body"
+                                            style="display: flex; flex-direction: column; justify-content: center;">
+                                            <p style="text-align: center;" class="card-text m-2">
+                                                <%= scheduleMatch[index].dateTime.toString().slice(0, 24) %>
+                                            </p>
+                                            <div class="btn-group" aria-label="Basic outlined example">
+                                                <a href="/team/cancel/<%= scheduleMatch[index]._id %>"
+                                                    class="btn btn-outline-primary">Cancel Match</a>
+                                                <!-- Button trigger modal -->
+                                                <a type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                                                    data-bs-target="#exampleModal1">
+                                                    Declare Winner
+                                                </a>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal1" tabindex="-1"
+                                                    aria-labelledby="exampleModalLabe2" aria-hidden="true">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabe2">Choose
+                                                                    The Winner</h5>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <form action="/team/declare/<%= scheduleMatch[index]._id %>"
+                                                                method="post">
+                                                                <div class="modal-body">
+                                                                    <div class="form-group" id="team1Input">
+                                                                        <input name="winner" type="text"
+                                                                            class="form-control" id="winner"
+                                                                            placeholder="Enter Winner Name" required />
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-secondary"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit" class="btn btn-primary">Save
+                                                                        changes</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <% } %>
+                                        <% } else { %>
+                                            <div class="alert alert-danger d-flex align-items-center" role="alert">
+                                                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img"
+                                                    aria-label="Warning:">
+                                                    <use xlink:href="#exclamation-triangle-fill" />
+                                                </svg>
+                                                <div>
+                                                    No matches Scheduled Yet
+                                                </div>
+                                            </div>
+                                            <% } %>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!--End Start Alerts-->
+            </div><!-- End rows-->
+
+        </div><!-- End Container-->
+    </div><!-- End Content-->
+
+
+
+
+
+    <!-- Loader -->
+    <div class="loader">
+        <div class="spinner-border text-light" role="status">
+          <span class="sr-only">...</span>
+        </div>
+      </div>
+      <!-- Loader -->
+      <div class="loader-overlay"></div>
+      <!-- General JS Scripts -->
+      <!-- JS Libraies -->
+      <script src="modules/jquery/jquery.min.js"></script>
+      <script src="modules/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
+      <!-- Template JS File -->
+      <script src="js/script.js"></script>
+</body>
+
+</html>

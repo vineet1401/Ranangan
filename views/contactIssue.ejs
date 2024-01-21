@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+
+<head> <!-- Required meta tags -->
+    <%- include("../DPartials/head.ejs") %>
+</head>
+
+<body> <!--Topbar -->
+    <%- include("../DPartials/side.ejs") %>
+
+
+    <div class="content-start transition">
+        <div class="container-fluid dashboard">
+            <div class="content-header">
+                <h1>Queries by User</h1>
+                <p></p>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <% if (locals.contactQueries && contactQueries.length > 0) { %>
+                        <% for (let index=0; index < contactQueries.length; index++) { %>
+                            <div class="card border-primary mb-3">
+                                <div class="card-header">
+                                    <h4>
+                                        <%= contactQueries[index].subject %>
+                                    </h4>
+                                </div>
+                                <div class="card-body text-primary ">
+                                    <h5 class="card-title">
+                                        Name : <%= contactQueries[index].name %>
+                                    </h5>
+                                    <p class="card-text">
+                                        <%= contactQueries[index].email %>
+                                    </p>
+                                    <p class="card-text">
+                                        Message <br>
+                                    <%= contactQueries[index].message %>
+                                    </p>
+                                    <a href="/resolve/<%= contactQueries[index]._id %>" class="btn btn-primary">Resolved</a>
+                                </div>
+
+                            </div>
+                            <% } %>
+                    <% } else{%>
+                        <div class="card border-primary mb-3">
+                                        <div class="card-header">No Queries</div>
+                                        <div class="card-body text-primary">
+                                            <h5 class="card-title">Hooray Problems are
+                                                zero!!!</h5>
+                                            <p class="card-text">Excellent Mangement</p>
+                                        </div>
+                        </div>
+                    <% } %>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header"> </div>
+                        <div class="card-body">
+                            <iframe src="https://giphy.com/embed/Pk9TPqUpHXG3aIbhrb" width="480" height="323" frameBorder="0" class="giphy-embed" allowFullScreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>  
+        <!-- Preloader -->
+        <div class="loader">
+            <div class="spinner-border text-light" role="status">
+              <span class="sr-only">...</span>
+            </div>
+          </div>
+          <!-- Loader -->
+          <div class="loader-overlay"></div>
+          <!-- General JS Scripts -->
+          <!-- JS Libraies -->
+          <script src="modules/jquery/jquery.min.js"></script>
+          <script src="modules/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
+          <!-- Template JS File -->
+          <script src="js/script.js"></script>
+</body>
+
+</html>

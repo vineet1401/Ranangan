@@ -1,0 +1,61 @@
+<!-- views/registration.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/head.ejs") %>
+        <link rel="stylesheet" href="/css/registerFormStyle.css">
+        <title>Team Registration</title>
+</head>
+
+<body>
+    <%- include("./partials/nav.ejs") %>
+        <section class="login">
+            <div class="login_box">
+                <div class="left">
+                    <div class="contact">
+                        <form style="padding: 10px;" action="/register/team" method="post">
+                            <h3>Registration For <%= sportname %>
+                            </h3>
+                            <input readonly type="text" placeholder="<%= sportname %>" value="<%= sportname %>" name="sportName">
+                            <input type="text" placeholder="Enter Your Team Name" name="teamName">
+                            <!-- <label for="departmentName">Choose Your Department</label> -->
+                            <select name="departmentName" id="department">
+                                <option value="Choose Your Department">Choose Your Department</option>
+                                <option value="Computer Engineering">Computer Engineering</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Artificial Intelligence & DS">Artificial Intelligence & DS</option>
+                                <option value="Mechanical Engineering">Mechanical Engineering</option>
+                                <option value="Electrical Engineering">Electrical Engineering</option>
+                                <option value="Electronics and Telecommunication">Electronics and Telecommunication
+                                </option>
+                            </select>
+                            <select name="year" id="Year">
+                                <option value="Choose Your Year">Choose Your Year</option>
+                                <option value="FE">FE</option>
+                                <option value="SE">SE</option>
+                                <option value="TE">TE</option>
+                                <option value="BE">BE</option>
+                            </select>
+                            <!-- <input type="text" placeholder="Enter Your Year" name="year"> -->
+                            <input type="text" placeholder="Enter Your Captain Name" name="captainName">
+                            <input type="text" placeholder="Enter Your ZPRN Number" name="prnNo">
+                            <!-- Button trigger modal -->
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary">Register</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="right-text">
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include("./partials/footer.ejs") %>
+            <%- include("./partials/script.ejs") %>
+</body>
+
+</html>

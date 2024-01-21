@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <%- include("./DPartials/head.ejs") %>
+</head>
+
+<body>
+  <%- include("./DPartials/side.ejs") %>
+
+  <!--Content Start-->
+  <div class="content-start transition ">
+    <div class="container-fluid dashboard">
+      <!--Start Alerts-->
+      <div class="row">
+        <div class="col-12 col-md-7">
+          <div class="form-card">
+            <h2 class="mb-4 text-center">Athletics</h2>
+            <form action="/one/athletics" method="POST">
+              <div class="form-group" id="gameTitle">
+                <label for="gameTitle">Game:</label>
+                <select class="form-control" id="gameTitle" name="sportName" onchange="toggleTeamsInput()" required="">
+                  <option value="NULL" class="">
+                    ----Select----</option>
+                  <option value="100m-running">100M
+                    Running</option>
+                  <option value="200m-running">200M
+                    Running</option>
+                  <option value="400m-running">400M
+                    Running</option>
+                  <option value="1600m-running">1600M
+                    Running</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="dateTime">Date and Time:</label>
+                <input type="datetime-local" class="form-control" id="dateTime" name="dateTime" required="" />
+              </div>
+              <!-- Adding participants -->
+              <div class="form-group" id="participantsSection">
+                <label for="participants">Participants:</label>
+                <span>(note if its team game only add team
+                  name)</span>
+                <div id="participantsContainer">
+                  <input type="text" class="form-control" placeholder="Enter Student Full Name" id="participiantId" />
+                </div>
+                <button type="button" class="btn btn-secondary mt-3" id="addParticipiantId" onclick="addParticipant()">
+                  Add More Student
+                </button>
+                <ul id="participiatnsList">
+                  <input type="hidden" id="participantsHidden" name="participants" value="">
+                </ul>
+              </div>
+              <!-- Coordinator Name -->
+              <div class="form-group">
+                <label for="coordinatorName">Coordinator
+                  Name:</label>
+                <input type="text" class="form-control" id="coordinatorName" name="coordinatorName"
+                  placeholder="Enter Coordinator Name" required />
+              </div>
+              <!-- Coordinator Contact Number -->
+              <div class="form-group">
+                <label for="coordinatorContact">Coordinator
+                  Contact Number:</label>
+                <input type="tel" class="form-control" id="coordinatorContact" name="coordinatorContact"
+                  placeholder="Enter Coordinator Contact Number" required />
+              </div>
+              <div class="text-center">
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                  Schedule Event
+                </button>
+                <!-- Modal -->
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                  aria-hidden="true">
+                  <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                          Athletic Event</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        Are you sure You want to
+                        schedule event
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                        <button type="submit" class="btn btn-primary" onclick="submitForm()">Yes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Sport Name</th>
+                    <th scope="col">Cordinator Name</th>
+                    <th scope="col">Winner</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% for( let index=0; index < winnerList.length; index++ ) { %>
+                    <tr>
+                      <td scope="row">
+                        <%= winnerList[index].dateTime.toString().slice(0, 24)%>
+                      </td>
+                      <td>
+                        <%= winnerList[index].sportName %>
+                      </td>
+                      <td>
+                        <%= winnerList[index].coordinatorName %>
+                      </td>
+                      <td>
+                        <%= winnerList[index].winner %>
+                      </td>
+                    </tr>
+                    <% } %>
+
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-5">
+          <div class="card">
+            <div class="card-header font-weight-bold mr-auto">
+              Scheduled Matches
+            </div>
+            <div class="card-body">
+              <% if (locals.scheduleMatch && scheduleMatch.length> 0) { %>
+                <% for (let index=0; index < scheduleMatch.length; index++) { %>
+                  <% if(scheduleMatch[index].completed != true) {%>
+                    <div style="height: 140px; margin: 5px;" class="card">
+                      <h1 style="padding: 5px; text-align: center; font-size: 2em;" class="card-header">
+                        <%= scheduleMatch[index].sportName %>
+                      </h1>
+                      <div class="card-body" style="display: flex; flex-direction: column; justify-content: center;">
+                        <p style="text-align: center;" class="card-text m-2">
+                          <%= scheduleMatch[index].dateTime.toString().slice(0, 24) %>
+                        </p>
+                        <div class="btn-group" aria-label="Basic outlined example">
+                          <a href="/solo/cancel/<%= scheduleMatch[index]._id %>" class="btn btn-outline-primary">Cancel
+                            Match</a>
+                          <!-- Button trigger modal -->
+                          <a type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal1">
+                            Declare Winner
+                          </a>
+  
+                          <!-- Modal -->
+                          <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabe2"
+                            aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="exampleModalLabe2">Choose The Winner</h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                                </div>
+                                <form action="/solo/declare/<%= scheduleMatch[index]._id %>" method="post">
+                                  <div class="modal-body">
+                                    <div class="form-group" id="team1Input">
+                                      <input name="winner" type="text" class="form-control" id="winner"
+                                        placeholder="Enter Winner Name" required />
+                                    </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="submit" class="btn btn-primary">Save changes</button>
+                                  </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  <% } %>
+                  <% } %>
+                    <% } else { %>
+                      <div class="alert alert-danger d-flex align-items-center" role="alert">
+                        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:">
+                          <use xlink:href="#exclamation-triangle-fill" />
+                        </svg>
+                        <div>
+                          No matches Scheduled Yet
+                        </div>
+                      </div>
+                      <% } %>
+            </div>
+          </div>
+        </div>
+        <!--End Start Alerts-->
+      </div><!-- End rows-->
+    </div><!-- End Container-->
+  </div><!-- End Content-->
+  <!-- Preloader -->
+  <div class="loader">
+    <div class="spinner-border text-light" role="status">
+      <span class="sr-only">...</span>
+    </div>
+  </div>
+  <!-- Loader -->
+  <div class="loader-overlay"></div>
+  <!-- General JS Scripts -->
+  <!-- JS Libraies -->
+  <script src="modules/jquery/jquery.min.js"></script>
+  <script src="modules/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
+  <!-- Template JS File -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>

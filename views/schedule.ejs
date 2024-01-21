@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include("./partials/head.ejs") %>
+        <title>Ranangan</title>
+        <!-- Template Stylesheet -->
+        <link href="/css/scheduleStyle.css" rel="stylesheet">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <style>
+            /* body {
+              font-family: 'lato', sans-serif;
+            }
+      
+            .container {
+              max-width: 1000px;
+              margin-left: auto;
+              margin-right: auto;
+              padding-left: 10px;
+              padding-right: 10px;
+              border-bottom: 1px solid orangered;
+            }
+      
+            h2 {
+              font-size: 26px;
+              margin: 20px 0;
+              text-align: center;
+            } */
+
+            .responsive-table {
+                li {
+                    border-radius: 3px;
+                    padding: 25px 30px;
+                    display: block;
+                    margin-bottom: 25px;
+                }
+
+                .table-header {
+                    background-color: #021928;
+                    font-size: 14px;
+                    text-transform: uppercase;
+                    letter-spacing: 0.03em;
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+                .table-row {
+                    background-color: #ffffff;
+                    box-shadow: 0px 0px 9px 0px rgba(0, 0, 0, 0.1);
+                    display: flex;
+                    justify-content: space-between;
+                }
+
+
+
+                @media all and (max-width: 767px) {
+                    .table-header {
+                        display: none;
+                    }
+
+                    li {
+                        display: flex;
+                        justify-content: space-evenly;
+
+
+                    }
+
+                    .col {
+                        flex-basis: 100%;
+                    }
+
+                    .col {
+                        display: flex;
+                        padding: 10px 0;
+
+                        &:before {
+                            color: #6C7A89;
+                            padding-right: 10px;
+                            content: attr(data-label);
+                            flex-basis: 50%;
+                            text-align: right;
+                        }
+                    }
+                }
+            }
+        </style>
+
+</head>
+
+<body style="width: 100vw;">
+    <%- include("./partials/Nav.ejs") %>
+
+        <section>
+            <div id="schedule" class="class">
+                <div class="container">
+                    <div class="section-header text-center ">
+                        <p>Our Timelines</p>
+                        <h2>GAMES SCHEDULE</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <ul id="class-filter">
+                                <a href="/schedule">
+                                    <li>All</li>
+                                </a>
+                                <a href="/schedule/see/cricket">
+                                    <li>Cricket</li>
+                                </a>
+                                <a href="/schedule/see/football">
+                                    <li>Football</li>
+                                </a>
+                                <a href="/schedule/see/basketball">
+                                    <li>Basketball</li>
+                                </a>
+                                <a href="/schedule/see/khokho">
+                                    <li>Kho-Kho</li>
+                                </a>
+                                <a href="/schedule/see/kabaddi">
+                                    <li>Kabaddi</li>
+                                </a>
+                                <a href="/schedule/see/chess">
+                                    <li>Chess</li>
+                                </a>
+                                <a href="/schedule/see/carrom">
+                                    <li>Carrom</li>
+                                </a>
+                                <a href="/schedule/see/badminton">
+                                    <li>Badminton</li>
+                                </a>
+                                <a href="/schedule/see/tabletennis">
+                                    <li>Table Tennis</li>
+                                </a>
+                                <a href="/schedule/see/athletics">
+                                    <li>Athletics</li>
+                                </a>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row class-container">
+                        <% if (locals.schedule) { %>
+                            <% for( let index=0; index < schedule.length; index++ ) { %>
+                                <div class="col-lg-4 col-md-6 col-sm-12 class-item " data-wow-delay="0.0s">
+                                    <div style="border: 1px black solid;" class="class-wrap">
+                                        <div style="height: 150px;" class="class-img">
+                                            <img src="<%= image %>" style="height: 100%;" alt="Image">
+                                        </div>
+                                        <div class="class-text">
+                                            <% if (schedule[index].gameType.toString()=="solo" ) { %>
+                                                <h2 style="font-size: 1.5em;">
+                                                    <%= schedule[index].sportName %>
+                                                </h2>
+                                                <% } else { %>
+                                                    <h2 style="font-size: 1.5em;">
+                                                        <%= schedule[index].team1 %> &nbsp vs &nbsp <%=
+                                                                schedule[index].team2 %>
+                                                    </h2>
+                                                    <% } %>
+                                                        <div class="class-meta">
+                                                            <p><i class="far fa-calendar-alt"></i>
+                                                                <%=schedule[index].dateTime.toString().slice(0, 16)%>
+                                                            </p>
+                                                            <p><i class="far fa-clock"></i>
+                                                                <%=schedule[index].dateTime.toString().slice(16, 24)%>
+                                                            </p>
+                                                        </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                                    <% } %>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Class End -->
+
+
+        <section>
+            
+        <div id="winner" class="testimonial wow  reveal fade-bottom" data-wow-delay="0.1s">
+            <div class="container">
+                <div class="section-header text-center">
+                    <p>Champion Champs</p>
+                    <h2>Recent Winners</h2>
+                </div>
+            </div>
+            <div style="text-align: center;" >
+                <h2>SOLO GAME WINNER</h2>
+                <ul class="responsive-table">
+                    <li class="table-header" style="color: white;">
+                        <div class="col col-2">NO</div>
+                        <div class="col col-3">Date&Time</div>
+                        <div class="col col-3">Game</div>
+                        <div class="col col-4">winner</div>
+                    </li>
+                    <% for (let i=0; i < registrations1.length; i++) { %>
+
+                        <% if (registrations1[i].completed && registrations1[i].winner) { %>
+                            <li class="table-header"
+                                style="background-color: white; color: #021928; font-weight: bold;">
+                                <div class="col col-2">
+                                    <%= i+1 %>
+                                </div>
+                                <div class="col col-3">
+                                    <%= registrations1[i].dateTime.toString().substring(0,26) %>
+                                </div>
+                                <div class="col col-3">
+                                    <%= registrations1[i].sportName %>
+                                </div>
+                                <div style="background-color: #bbc9d2;" class=" col col-4">
+                                    <%= registrations1[i].winner %>
+                                </div>
+                            </li>
+                            <% } %>
+                                <% } %>
+                </ul>
+            </div>
+
+            <div style="text-align: center;" >
+                <h2>TEAM GAME WINNER</h2>
+                <ul class="responsive-table">
+                    <li class="table-header" style="color: white;">
+                        <div class="col col-1">NO</div>
+                        <div class="col col-2">Game Name</div>
+                        <div class="col col-3">Date&Time</div>
+                        <div class="col col-2">Team 1</div>
+                        <div class="col col-2">Team 2</div>
+                        <div class="col col-2">Winner</div>
+                    </li>
+                    <% for (let i=0; i < registrations2.length; i++) { %>
+                        <% if (registrations2[i].completed && registrations2[i].winner) { %>
+                            <li class="table-header"
+                                style="background-color: white; color: #021928; font-weight: bolder;">
+                                <div class="col col-1">
+                                    <%= i %>
+                                </div>
+                                <div class="col col-2">
+                                    <%= registrations2[i].sportName %>
+                                </div>
+                                <div class="col col-3">
+                                    <%= registrations2[i].dateTime.toString().substring(0,26) %>
+                                </div>
+                                <div class="col col-2">
+                                    <%= registrations2[i].team1 %>
+                                </div>
+                                <div class="col col-2">
+                                    <%= registrations2[i].team2 %>
+                                </div>
+                                <div style="background-color: #bbc9d2;" class="col col-2">
+                                    <%= registrations2[i].winner %>
+                                </div>
+                            </li>
+                            <% } %>
+                                <% } %>
+
+                </ul>
+            </div>
+        </div>
+
+        </section>
+
+        <!-- Contact Start -->
+        <section>
+            <div id="contact" class="contact">
+                <div class="container reveal fade-bottom">
+                    <div class="section-header text-center wow zoomIn" data-wow-delay="0.1s">
+                        <p>Get In Touch</p>
+                        <h2>For Any Query</h2>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-md-4 contact-item wow zoomIn" data-wow-delay="0.2s">
+                                    <i class="fa fa-map-marker-alt"></i>
+                                    <div class="contact-text">
+                                        <h2>Location</h2>
+                                        <p>Zeal Education Socitey's, Narhe-Dhayari Road, Narhe, Pune-411 041</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 contact-item wow zoomIn" data-wow-delay="0.4s">
+                                    <i class="fa fa-phone-alt"></i>
+                                    <div class="contact-text">
+                                        <h2>Phone</h2>
+                                        <p>+91 7420834844</p>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 contact-item wow zoomIn" data-wow-delay="0.6s">
+                                    <i class="far fa-envelope"></i>
+                                    <div class="contact-text">
+                                        <h2>Email</h2>
+                                        <p>zeal@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 wow " data-wow-delay="0.1s">
+                            <div class="contact-form">
+                                <div id="success"></div>
+                                <form action="/register/contact" method="post" name="sentMessage" id="contactForm"
+                                    novalidate="novalidate">
+                                    <div class="control-group">
+                                        <input name="name" type="text" class="form-control" id="name"
+                                            placeholder="Your Name" required="required"
+                                            data-validation-required-message="Please enter your name" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="control-group">
+                                        <input name="email" type="email" class="form-control" id="email"
+                                            placeholder="Your Email" required="required"
+                                            data-validation-required-message="Please enter your email" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="control-group">
+                                        <input name="subject" type="text" class="form-control" id="subject"
+                                            placeholder="Subject" required="required"
+                                            data-validation-required-message="Please enter a subject" />
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div class="control-group">
+                                        <textarea name="message" class="form-control" id="message" placeholder="Message"
+                                            required="required"
+                                            data-validation-required-message="Please enter your message"></textarea>
+                                        <p class="help-block text-danger"></p>
+                                    </div>
+                                    <div>
+                                        <button class="btn" type="submit" id="sendMessageButton">Send Message</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- Contact End -->
+
+        <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+
+        <%- include("./partials/footer.ejs") %>
+            <%- include("./partials/script.ejs") %>
+
+</body>
+
+</html>

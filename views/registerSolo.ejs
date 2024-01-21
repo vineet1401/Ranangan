@@ -1,0 +1,48 @@
+<!-- views/registration.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("./partials/head.ejs") %>
+    <link rel="stylesheet" href="/css/registerFormStyle.css" />
+    <title>Solo Registration</title>
+</head>
+
+<body>
+  <%- include("./partials/nav.ejs") %>
+    <section class="login">
+      <div class="login_box">
+        <div class="left">
+          <div class="contact">
+            <form style="padding: 10px" action="/register/solo" method="post">
+              <h3>Registration For Indivual Game</h3>
+              <input required type="text" placeholder="Enter your  name" name="Name" />
+              <input required type="text" placeholder="Enter your department name" name="departmentName" />
+              <input required type="text" placeholder="Enter your year" name="year" />
+              <select name="gameName" id="gameName">
+                <option value="Choose Your Department">Choose Your Game</option>
+                <option value="100m Running">100m Running</option>
+                <option value="200m Running">200m Running</option>
+                <option value="400m Running">400m Running</option>
+                <option value="400 X 4 Relay">400 X 4 Relay</option>
+              </select>
+              <input required type="text" placeholder="Enter your prn no" name="prnNo" />
+              <button type="submit" class="btn btn-primary" >
+                Submit
+              </button>
+
+            </form>
+          </div>
+        </div>
+        <div class="right">
+          <div class="right-text"></div>
+          <!-- <div class="right-inductor"><img src="/images/photo1.jpg" alt=""></div> -->
+        </div>
+      </div>
+    </section>
+    <%- include("./partials/footer.ejs") %>
+      <%- include("./partials/script.ejs") %>
+</body>
+
+</html>

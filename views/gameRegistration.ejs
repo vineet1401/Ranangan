@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include("./DPartials/head.ejs") %>
+</head>
+
+<body>
+  <%- include("./DPartials/side.ejs") %>
+  <div class="content-start transition">
+    <div class="container-fluid dashboard">
+      <div style="margin: 20px; text-align: center;">
+        <h2>Solo Game Registration</h2>
+        <ul class="responsive-table">
+          <li class="table-header">
+            <div class="col col-1">NO</div>
+            <div class="col col-3">Name</div>
+            <div class="col col-3">Department Name</div>
+            <div class="col col-2">Year</div>
+            <div class="col col-3">prnNO</div>
+          </li>
+          <% for( let index=0; index < soloParticipants.length; index++ ) { %>
+            <li style=" padding: 0px;" class="table-row">
+              <div class="col col-1"  data-label="registration.Name">
+                <p style="margin: auto;">
+                  <%= index + 1 %>
+                </p>
+              </div>
+              <div class="col col-3"  data-label="registration.Name">
+                <p style="margin: auto;">
+                  <%= soloParticipants[index].Name %>
+                </p>
+              </div>
+              <div class="col col-3"  data-label="registration.departmentName">
+                <p style="margin: auto;">
+                  <%= soloParticipants[index].departmentName %>
+                </p>
+              </div>
+              <div class="col col-2"  data-label="registration.year">
+                <p style="margin: auto;">
+                  <%= soloParticipants[index].year %>
+                </p>
+              </div>
+              <div class="col col-3"  data-label="registration.prnNo">
+                <p style="margin: auto;">
+                  <%= soloParticipants[index].prnNo %>
+                </p>
+              </div>
+            </li>
+            <% } %>
+        </ul>
+      </div>
+
+      <div style="margin: 20px; text-align: center;">
+        <h2>Team Game Registration</h2>
+        <ul class="responsive-table">
+          <li class="table-header">
+            <div class="col col-1">NO</div>
+            <div class="col col-3">Team Name</div>
+            <div class="col col-3">Department Name</div>
+            <div class="col col-1">Year</div>
+            <div class="col col-2">Captain</div>
+            <div class="col col-2">prnNO</div>
+          </li>
+          <% for( let index=0; index < teamParticipants.length; index++ ){ %>
+            <li style=" padding: 0px;" class="table-row">
+              <div class="col col-1"  data-label="registration.Name">
+                <p style="margin: auto;">
+                  <%= index + 1 %>
+                </p>
+              </div>
+              <div class="col col-3"  data-label="registration.Name">
+                <p style="margin: auto;">
+                  <%= teamParticipants[index].teamName %>
+                </p>
+              </div>
+              <div class="col col-3"  data-label="registration.departmentName">
+                <p style="margin: auto;">
+                  <%= teamParticipants[index].departmentName %>
+                </p>
+              </div>
+              <div class="col col-1"  data-label="registration.year">
+                <p style="margin: auto;">
+                  <%= teamParticipants[index].year %>
+                </p>
+              </div>
+              <div class="col col-2"  data-label="registration.captainName">
+                <p style="margin: auto;">
+                  <%= teamParticipants[index].captainName %>
+                </p>
+              </div>
+              <div class="col col-2"  data-label="registration.prnNO">
+                <p style="margin: auto;">
+                  <%= teamParticipants[index].prnNo %>
+                </p>
+              </div>
+            </li>
+            <% } %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="loader">
+    <div class="spinner-border text-light" role="status">
+      <span class="sr-only">...</span>
+    </div>
+  </div>
+  <!-- Loader -->
+  <div class="loader-overlay"></div>
+  <!-- General JS Scripts -->
+  <!-- JS Libraies -->
+  <script src="modules/jquery/jquery.min.js"></script>
+  <script src="modules/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
+  <!-- Template JS File -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
