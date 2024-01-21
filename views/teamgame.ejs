@@ -34,23 +34,31 @@
                             </div>
                             <div class="form-group" id="team1Input">
                                 <label for="team1">Team 1:</label>
-                                <select aria-placeholder="Choose Team 1" class="form-control" id="team1" name="team1">
-                                    <% for( let index = 0; index < registered.length; index++ ) { %>
-                                        <option value="<%= registered[index].teamName %>"><%= registered[index].teamName %></option>
-                                    <% } %>
-                                    <!-- Add more options as needed -->
-                                  </select>
+                                <% if (registered.length == 0) { %>
+                                    <label for="">No team registered</label>
+                                 <% } else { %>                                  
+                                    <select aria-placeholder="Choose Team 1" class="form-control" id="team1" name="team1">
+                                        <% for( let index = 0; index < registered.length; index++ ) { %>
+                                            <option value="<%= registered[index].teamName %>"><%= registered[index].teamName %></option>
+                                        <% } %>
+                                        <!-- Add more options as needed -->
+                                      </select>
+                                <% } %>
                             </div>
 
                             <!-- Team 2 Input (Initially hidden) -->
                             <div class="form-group" id="team2Input">
                                 <label for="team2">Team 2:</label>
-                                <select aria-placeholder="Choose Team 1" class="form-control" id="team2" name="team2">
-                                    <% for( let index = 0; index < registered.length; index++ ) { %>
-                                        <option value="<%= registered[index].teamName %>"><%= registered[index].teamName %></option>
-                                    <% } %>
-                                    <!-- Add more options as needed -->
-                                  </select>
+                                <% if (registered.length == 0) { %>
+                                    <label for="">No team registered</label>
+                                 <% } else { %>                                  
+                                    <select aria-placeholder="Choose Team 1" class="form-control" id="team1" name="team1">
+                                        <% for( let index = 0; index < registered.length; index++ ) { %>
+                                            <option value="<%= registered[index].teamName %>"><%= registered[index].teamName %></option>
+                                        <% } %>
+                                        <!-- Add more options as needed -->
+                                      </select>
+                                <% } %>
                             </div>
 
                             <!-- Coordinator Name -->
