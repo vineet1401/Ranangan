@@ -1,8 +1,6 @@
 (function ($) {
     "use strict";
     
-    // Initiate the wowjs
-    new WOW().init();
     
     
     // Back to top button
