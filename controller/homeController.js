@@ -1,6 +1,8 @@
 const soloRegistrationModel = require("../models/registrationSoloSchema")
 const teamRegistrationModel = require("../models/registrationTeamSchema")
 const contactFormModel = require("../models/contactFormSchema")
+const { generateToken_JWT } = require("../services/jwtToken.js");
+
 
 const getLandingPage = async (req, res) => {
     return res.render("index", { home: true });
@@ -40,7 +42,6 @@ const postRegisterTeamForm = async (req, res) => {
         await newRegistration.save();
         res.redirect("/");
     } catch (error) {
-        console.log(error)
         res.status(400).send("<h1>Try Again !!!</h1> ")
     }
 };
@@ -81,5 +82,15 @@ const postContactForm = async (req, res) => {
     }
 };
 
+const getLoginPage = async(req, res)=>{
+    res.render("login.ejs")
+}
 
-module.exports = { getLandingPage, getBasketballRegisterPage, getCricketRegisterPage, getFootballRegisterPage, getKabaddiRegisterPage, getKhoKhoRegisterPage,getSoloRegisterPage, postRegisterTeamForm, postRegisterSoloForm, postContactForm };
+const postLoginPage = async(req, res)=>{
+    const {username, password} = req.body;
+    const token = generateToken_JWT(username, password);
+    return res.cookie('token', token, { maxAge: 60000 * 60}).redirect("/dashboard");
+}
+
+
+module.exports = {postLoginPage, getLoginPage, getLandingPage, getBasketballRegisterPage, getCricketRegisterPage, getFootballRegisterPage, getKabaddiRegisterPage, getKhoKhoRegisterPage,getSoloRegisterPage, postRegisterTeamForm, postRegisterSoloForm, postContactForm }

@@ -4,8 +4,10 @@ const path = require('path');
 const mongoose = require('mongoose');
 const env = require("dotenv").config()
 
+const checkAuthentication = require('./services/authentication.js');
 const homeRoutes = require("./routes/homeRoutes.js");
 const scheduleRoutes = require("./routes/scheduleRoutes.js");
+const dashboardRoutes = require("./routes/dashboardRoutes.js");
 
 const mongoURL = process.env.DATABASE_URL
 const port = process.env.WEBSITE_PORT
@@ -26,6 +28,7 @@ app.use(express.static(path.join(__dirname , "public")));
 app.use(cookieParser());
 
 // Home Routes
+app.use("/dashboard",checkAuthentication("token"), dashboardRoutes)
 app.use("/", homeRoutes);
 app.use("/schedule", scheduleRoutes)
 

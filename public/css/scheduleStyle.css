@@ -261,101 +261,7 @@ body {
   .class .class-meta p:first-child {
     margin-right: 10px;
   }
-  
-  /*******************************/
-  /******* Testimonial CSS *******/
-  /*******************************/
-  .testimonial {
-    position: relative;
-    padding: 45px 0;
-  }
-  
-  .testimonial .container {
-    padding: 0;
-  }
-  
-  .testimonial .testimonial-item {
-    position: relative;
-    margin: 0 15px;
-    text-align: center;
-  }
-  
-  .testimonial .testimonial-img {
-    position: relative;
-    margin-bottom: 15px;
-    z-index: 1;
-  }
-  
-  .testimonial .testimonial-item img {
-    margin: 0 auto;
-    width: 120px;
-    padding: 13px;
-    border-radius: 100px;
-    border: 1px solid rgba(0, 0, 0, 0.07);
-    background: #ffffff;
-    transition: 0.5s;
-  }
-  
-  .testimonial .testimonial-text {
-    position: relative;
-    margin-top: -70px;
-    padding: 75px 25px 25px 25px;
-    text-align: center;
-    background: #ffffff;
-    border: 1px solid rgba(0, 0, 0, 0.07);
-  }
-  
-  .testimonial .testimonial-item p {
-    font-size: 16px;
-    color: #666666;
-  }
-  
-  .testimonial .testimonial-text h3 {
-    font-size: 18px;
-    font-weight: 600;
-    margin-bottom: 10px;
-  }
-  
-  .testimonial .testimonial-text h4 {
-    color: #666666;
-    font-size: 14px;
-    margin-bottom: 0;
-  }
-  
-  .testimonial .owl-item.center img {
-    border-color: transparent;
-  }
-  
-  .testimonial .owl-item.center .testimonial-text {
-    background: #343148;
-  }
-  
-  .testimonial .owl-item.center .testimonial-text h3 {
-    color: #f7cac9;
-  }
-  
-  .testimonial .owl-item.center .testimonial-text p,
-  .testimonial .owl-item.center .testimonial-text h4 {
-    color: #ffffff;
-  }
-  
-  .testimonial .owl-dots {
-    margin-top: 15px;
-    text-align: center;
-  }
-  
-  .testimonial .owl-dot {
-    display: inline-block;
-    margin: 0 5px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #f7cac9;
-  }
-  
-  .testimonial .owl-dot.active {
-    background: #343148;
-  }
+
   
   /*******************************/
   /********* Contact CSS *********/
@@ -601,13 +507,13 @@ body {
     opacity: 1;
   }
   .active.fade-bottom {
-    animation: fade-bottom 1s ease-in;
+    animation: fade-bottom 0.3s ease-in;
   }
   .active.fade-left {
-    animation: fade-left 1s ease-in;
+    animation: fade-left 0.3s ease-in;
   }
   .active.fade-right {
-    animation: fade-right 1s ease-in;
+    animation: fade-right 0.3s ease-in;
   }
   @keyframes fade-bottom {
     0% {

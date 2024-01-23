@@ -1,7 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require('mongoose');
-const routes = require("./routes/dashboardRoutes")
+const dashboardRoutes = require("./routes/dashboardRoutes")
 const env = require("dotenv").config()
 
 const port = process.env.DASHBOARD_PORT;
@@ -23,7 +23,7 @@ app.use(express.urlencoded({ extended: true }));
 
 
 
-app.use("/", routes);
+app.use("/", dashboardRoutes);
 
 
 

@@ -1,5 +1,5 @@
 const express = require("express");
-const {getLandingPage,getSoloRegisterPage, getBasketballRegisterPage,postContactForm, getCricketRegisterPage, getFootballRegisterPage, getKabaddiRegisterPage, getKhoKhoRegisterPage, postRegisterSoloForm ,postRegisterTeamForm} = require("../controller/homeController.js");
+const {getLandingPage,getSoloRegisterPage, getBasketballRegisterPage,postContactForm, getCricketRegisterPage, getFootballRegisterPage, getKabaddiRegisterPage, getKhoKhoRegisterPage, postRegisterSoloForm ,postRegisterTeamForm, getLoginPage, postLoginPage} = require("../controller/homeController.js");
 
 const router = express.Router();
 
@@ -23,5 +23,9 @@ router.post("/register/team", postRegisterTeamForm)
 router.post("/register/solo", postRegisterSoloForm)
 
 router.post("/register/contact", postContactForm);
+
+router.get("/login", getLoginPage);
+
+router.post("/login", postLoginPage);
 
 module.exports = router;

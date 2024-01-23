@@ -19,7 +19,7 @@
                 <!--Start Alerts-->
                 <div class="col-12 col-md-7">
                     <div class="form-card">
-                        <form action="/team/schedule" method="post">
+                        <form action="/dashboard/team/schedule" method="post">
                             <!-- Game Selection -->
                             <div class="form-group">
                                 <input
@@ -194,13 +194,15 @@
                                                                 <button type="button" class="btn-close"
                                                                     data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
-                                                            <form action="/team/declare/<%= scheduleMatch[index]._id %>"
+                                                            <form action="/dashboard/team/declare/<%= scheduleMatch[index]._id %>"
                                                                 method="post">
                                                                 <div class="modal-body">
                                                                     <div class="form-group" id="team1Input">
-                                                                        <input name="winner" type="text"
-                                                                            class="form-control" id="winner"
-                                                                            placeholder="Enter Winner Name" required />
+                                                                        <label for="winner">Click on me to choose winner</label>
+                                                                        <select placeholder="Choose a Winner" class="form-control" id="winner" name="winner">
+                                                                            <option value="<%= scheduleMatch[index].team1 %>"><%= scheduleMatch[index].team1 %></option>
+                                                                            <option value="<%= scheduleMatch[index].team2 %>"><%= scheduleMatch[index].team2 %></option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="modal-footer">
@@ -253,10 +255,10 @@
       <div class="loader-overlay"></div>
       <!-- General JS Scripts -->
       <!-- JS Libraies -->
-      <script src="modules/jquery/jquery.min.js"></script>
-      <script src="modules/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
+      <script src="/modules/jquery/jquery.min.js"></script>
+      <script src="/modules/bootstrap-5.1.3/js/bootstrap.bundle.min.js"></script>
       <!-- Template JS File -->
-      <script src="js/script.js"></script>
+      <script src="/js/script.js"></script>
 </body>
 
 </html>

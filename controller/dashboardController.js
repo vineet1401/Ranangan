@@ -6,6 +6,7 @@ const contactFormModel = require("../models/contactFormSchema.js")
 const { validationResult } = require('express-validator');
 
 const getDashboard = async (req, res) => {
+    
     try {
         // Use the countDocuments method to get the total count of documents in the Team game
         const totalCount1 = await teamRegistrationModel.countDocuments({});
@@ -128,9 +129,9 @@ const postAthleticSchedule = async (req, res) => {
             coordinatorContact,
         });
         const data = await athleticsInstance.save();
-        res.status(200).send("<h1>Match Scheduled Successfull</h1> <br/> <a href='/'>Go Home</a>");
+        res.status(200).send("<h1>Match Scheduled Successfull</h1> <br/> <a href='/dashboard'>Go Home</a>");
     } catch (error) {
-        res.status(400).send("<h1>Try Again</h1> <br/> <a href='/'>Go Home</a>");
+        res.status(400).send("<h1>Try Again</h1> <br/> <a href='/dashboard'>Go Home</a>");
     }
 };
 
@@ -150,23 +151,23 @@ const postTeamSchedule = async (req, res) => {
             team1: team1,
             team2: team2
         });
-        res.status(200).send("<h1>Match Scheduled Successfull</h1> <br/> <a href='/'>Go Home</a>");
+        res.status(200).send("<h1>Match Scheduled Successfull</h1> <br/> <a href='/dashboard'>Go Home</a>");
 
     } catch (err) {
-        res.status(400).send("<h1>Try Again</h1> <br/> <a href='/'>Go Home</a>");
+        res.status(400).send("<h1>Try Again</h1> <br/> <a href='/dashboard'>Go Home</a>");
     }
 }
 
 const getCancelTeamGame = async (req, res) => {
     const id = req.params.id;
     await teamScheduleModel.deleteOne({ _id: id });
-    return res.status(200).send("<h1>Match Cancelled Successfull</h1> <br/> <a href='/'>Go Home</a>");
+    return res.status(200).send("<h1>Match Cancelled Successfull</h1> <br/> <a href='/dashboard'>Go Home</a>");
 }
 
 const getCancelSoloGame = async (req, res) => {
     const id = req.params.id;
     await athleticScheduleModel.deleteOne({ _id: id });
-    return res.status(200).send("<h1>Match Cancelled Successfull</h1> <br/> <a href='/'>Go Home</a>");
+    return res.status(200).send("<h1>Match Cancelled Successfull</h1> <br/> <a href='/dashboard'>Go Home</a>");
 }
 
 const postTeamGameWinner = async (req, res) => {
@@ -174,7 +175,7 @@ const postTeamGameWinner = async (req, res) => {
     const id = req.params.id;
     await teamScheduleModel.findByIdAndUpdate(id, { winner: winner});
     await teamScheduleModel.findByIdAndUpdate(id, { completed: true });
-    return res.status(200).send("<h1>Winner Declared Successfull</h1> <br/> <a href='/'>Go Home</a>");
+    return res.status(200).send("<h1>Winner Declared Successfull</h1> <br/> <a href='/dashboard'>Go Home</a>");
 }
 
 const postSoloGameWinner = async (req, res) => {
@@ -182,7 +183,7 @@ const postSoloGameWinner = async (req, res) => {
     const id = req.params.id;
     await athleticScheduleModel.findByIdAndUpdate(id, { winner: winner });
     await athleticScheduleModel.findByIdAndUpdate(id, { completed: true });
-    return res.status(200).send("<h1>Winner Declared Successfull</h1> <br/> <a href='/'>Go Home</a>");
+    return res.status(200).send("<h1>Winner Declared Successfull</h1> <br/> <a href='/dashboard'>Go Home</a>");
 }
 
 const getContactIssuePage = async (req, res) => {
@@ -208,8 +209,17 @@ const getRegistrationPage = async (req, res) => {
         res.status(500).send('Internal Server Error');
     }
 }
+const logout = async(req, res)=>{
+    if(req.session){
+        res.clearCookie("token")
+        return res.redirect("/")
+    }
+    res.clearCookie("token")
+    return res.redirect("/")
+}
 
 module.exports = {
+    logout,
     postTeamGameWinner,
     postSoloGameWinner,
     getContactIssuePage,

@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const { check } = require('express-validator');
 const {
+  logout,
   postTeamGameWinner,
   postSoloGameWinner,
   getContactIssuePage,
@@ -58,6 +59,8 @@ router.post("/solo/declare/:id", postSoloGameWinner)
 router.get("/contactissue", getContactIssuePage)
 router.get("/resolve/:id", getResolveIssue)
 router.get('/registrations', getRegistrationPage);
+
+router.get("/logout", logout);
 
 
 module.exports = router;

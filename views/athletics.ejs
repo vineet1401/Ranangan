@@ -16,7 +16,7 @@
         <div class="col-12 col-md-7">
           <div class="form-card">
             <h2 class="mb-4 text-center">Athletics</h2>
-            <form action="/one/athletics" method="POST">
+            <form action="/dashboard/one/athletics" method="POST">
               <div class="form-group" id="gameTitle">
                 <label for="gameTitle">Game:</label>
                 <select class="form-control" id="gameTitle" name="sportName" onchange="toggleTeamsInput()" required="">
@@ -164,7 +164,7 @@
                                   <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                                 </div>
-                                <form action="/solo/declare/<%= scheduleMatch[index]._id %>" method="post">
+                                <form action="/dashboard/solo/declare/<%= scheduleMatch[index]._id %>" method="post">
                                   <div class="modal-body">
                                     <div class="form-group" id="team1Input">
                                       <input name="winner" type="text" class="form-control" id="winner"
@@ -211,9 +211,9 @@
   <div class="loader-overlay"></div>
   <!-- General JS Scripts -->
   <!-- JS Libraies -->
-  <script src="modules/jquery/jquery.min.js"></script>
+  <script src="/modules/jquery/jquery.min.js"></script>
   <!-- Template JS File -->
-  <script src="js/script.js"></script>
+  <script src="/js/script.js"></script>
 </body>
 
 </html>

@@ -19,7 +19,6 @@ const getSchedulePage = async(req, res)=>{
     const athleteschdeule = await athleticScheduleModel.find({completed:false}).maxTimeMS(20000);
     const teamGames = await teamScheduleModel.find({})
     const soloGames = await athleticScheduleModel.find({})
-    console.log(teamGames, soloGames);
     const combine = teamschdeule.concat(athleteschdeule)
     return res.render("schedule.ejs", {schedule:combine, image:"/images/logo.jpg", registrations1:soloGames, registrations2:teamGames});
 }
