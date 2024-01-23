@@ -10,7 +10,7 @@ const scheduleRoutes = require("./routes/scheduleRoutes.js");
 const dashboardRoutes = require("./routes/dashboardRoutes.js");
 
 const mongoURL = process.env.DATABASE_URL
-const port = process.env.WEBSITE_PORT
+const port = process.env.WEBSITE_PORT || 4000;
 
 main().catch(err => console.log(err));
 async function main() {
