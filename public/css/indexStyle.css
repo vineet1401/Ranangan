@@ -1,7 +1,4 @@
-/* styles.css */
-@import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/utilities';
+
 
 /*******************************/
 /********* General CSS *********/
@@ -10,6 +7,8 @@ body {
   color: #797979;
   background: #ffffff;
   font-family: "Open Sans", sans-serif;
+  width: 100vw !important;
+  overflow-x: hidden;
 }
 
 h1,
@@ -37,10 +36,6 @@ a:focus {
 .btn:focus,
 .form-control:focus {
   box-shadow: none;
-}
-
-.container-fluid {
-  max-width: 1366px;
 }
 
 .back-to-top {
@@ -526,25 +521,6 @@ a:focus {
   }
 }
 
-
-/* .hidden{
-    opacity: 0;
-    transition: all 1s;
-    filter: blur(5px);
-    transform: translateX(-100%);
-}
-.show{
-    opacity: 1;
-    filter: blur(0);
-    transform: translateX(0);
-
-}
-
-@media (prefers-reduced-motion){
-    .hidden{
-        transition: none;
-    }
-} */
 .reveal {
   position: relative;
   opacity: 0;
@@ -605,196 +581,3 @@ a:focus {
   opacity: 1;
 }
 
-
-/* Base Styles */
-
-/* ... (Existing styles remain unchanged) ... */
-
-/* Responsive Styles */
-
-@media (max-width: 767.98px) {
-  /* Mobile Styles */
-
-  .top-bar {
-    padding: 0 15px;
-  }
-
-  .navbar {
-    padding: 15px;
-  }
-
-  .hero {
-    padding: 60px 0;
-  }
-
-  .hero .hero-text h1 {
-    font-size: 35px;
-  }
-
-  .hero .hero-text p {
-    font-size: 14px;
-  }
-
-  .hero .hero-btn .btn {
-    padding: 10px 15px;
-  }
-
-  .sidebar {
-    margin-top: 30px;
-  }
-
-  .section-header p::after {
-    display: none;
-  }
-
-  .portfolio #portfolio-filter li,
-  .class #class-filter li {
-    margin: 5px;
-  }
-
-  .blog .pagination .page-link {
-    font-size: 14px;
-  }
-
-  /* ... (Add more responsive styles as needed) ... */
-}
-
-@media (min-width: 768px) and (max-width: 991.98px) {
-  /* Tablet Styles */
-
-  .top-bar {
-    padding: 0 30px;
-  }
-
-  .navbar {
-    padding: 20px 30px;
-  }
-
-  .hero .hero-text h1 {
-    font-size: 40px;
-  }
-
-  .hero .hero-text p {
-    font-size: 16px;
-  }
-
-  .hero .hero-btn .btn {
-    padding: 12px 20px;
-  }
-
-  /* ... (Add more tablet-specific styles as needed) ... */
-}
-
-/* ... (Continue adding media queries for larger screens) ... */
-
-/* Base Styles */
-
-/* ... (Existing styles remain unchanged) ... */
-
-/* Responsive Styles */
-
-/* Mobile Styles */
-@media (max-width: 575.98px) {
-  .top-bar {
-    padding: 0 15px;
-  }
-
-  .navbar {
-    padding: 15px;
-  }
-
-  .hero {
-    padding: 60px 0;
-  }
-
-  .hero .hero-text h1 {
-    font-size: 25px;
-  }
-
-  .hero .hero-text p {
-    font-size: 14px;
-  }
-
-  .hero .hero-btn .btn {
-    padding: 8px 10px;
-  }
-
-  .sidebar {
-    margin-top: 30px;
-  }
-
-  .section-header p::after {
-    display: none;
-  }
-
-  .portfolio #portfolio-filter li,
-  .class #class-filter li {
-    margin: 5px;
-  }
-
-  .blog .pagination .page-link {
-    font-size: 14px;
-  }
-
-  /* ... (Add more mobile-specific styles as needed) ... */
-}
-
-/* Tablet Styles */
-@media (min-width: 576px) and (max-width: 767.98px) {
-  .top-bar {
-    padding: 0 30px;
-  }
-
-  .navbar {
-    padding: 20px 30px;
-  }
-
-  .hero .hero-text h1 {
-    font-size: 30px;
-  }
-
-  .hero .hero-text p {
-    font-size: 16px;
-  }
-
-  .hero .hero-btn .btn {
-    padding: 10px 15px;
-  }
-
-  /* ... (Add more tablet-specific styles as needed) ... */
-}
-
-/* Small Desktop Styles */
-@media (min-width: 768px) and (max-width: 991.98px) {
-  .top-bar {
-    padding: 0 60px;
-  }
-
-  .navbar {
-    padding: 20px 60px;
-  }
-
-  .hero .hero-text h1 {
-    font-size: 35px;
-  }
-
-  .hero .hero-text p {
-    font-size: 18px;
-  }
-
-  .hero .hero-btn .btn {
-    padding: 12px 20px;
-  }
-
-  /* ... (Add more small desktop-specific styles as needed) ... */
-}
-
-/* Medium Desktop Styles */
-@media (min-width: 992px) and (max-width: 1199.98px) {
-  /* ... (Add medium desktop-specific styles as needed) ... */
-}
-
-/* Large Desktop Styles */
-@media (min-width: 1200px) {
-  /* ... (Add large desktop-specific styles as needed) ... */
-}

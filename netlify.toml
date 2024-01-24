@@ -1,8 +1,0 @@
-[build]
-  command = "npm run build"  # Adjust the build command based on your project setup
-  publish = "public"         # The directory to publish (your static files)
-  token = "nfp_yQCAvr8eELTsdHZeBEEnFxPy7HaRtoVW4a15"
-  timeout = 600 # Set the timeout value in seconds (adjust as needed)
-
-[functions]
-  # If you have serverless functions, configure them here

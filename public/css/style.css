@@ -3508,8 +3508,6 @@ button.bg-dark:focus {
   flex-direction: row !important;
 }
 
-.flex-column {
-
 @keyframes growIn {
   0% {
     -webkit-transform: scale(0.9);
@@ -3523,6 +3521,3 @@ button.bg-dark:focus {
     opacity: 1;
   }
 }
-
-/* GIF CSS */
-
