@@ -52,7 +52,7 @@
                                 <% if (registered.length == 0) { %>
                                     <label for="">No team registered</label>
                                  <% } else { %>                                  
-                                    <select aria-placeholder="Choose Team 1" class="form-control" id="team1" name="team1">
+                                    <select aria-placeholder="Choose Team 1" class="form-control" id="team2" name="team2">
                                         <% for( let index = 0; index < registered.length; index++ ) { %>
                                             <option value="<%= registered[index].teamName %>"><%= registered[index].teamName %></option>
                                         <% } %>
@@ -94,7 +94,7 @@
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                Are you sure to schedule the match?
+                                                <h3>Are you sure to schedule the match?</h3>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"

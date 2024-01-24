@@ -138,6 +138,9 @@
                     </div>
                     <div class="row class-container">
                         <% if (locals.schedule) { %>
+                            <% if (schedule.length == 0) { %>
+                                <h1 style="text-align: center;">No Matches Scheduled</h1>
+                              <% } %>
                             <% for( let index=0; index < schedule.length; index++ ) { %>
                                 <div class="col-lg-4 col-md-6 col-sm-12 class-item " >
                                     <div style="border: 1px black solid;" class="class-wrap">
@@ -173,7 +176,7 @@
             </div>
         </section>
         <!-- Class End -->
-
+<hr>
 
         <section>
             
@@ -184,77 +187,86 @@
                     <h2>Recent Winners</h2>
                 </div>
             </div>
-            <div style="text-align: center;" >
-                <h2>SOLO GAME WINNER</h2>
-                <ul class="responsive-table">
-                    <li class="table-header" style="color: white;">
-                        <div class="col col-2">NO</div>
-                        <div class="col col-3">Date&Time</div>
-                        <div class="col col-3">Game</div>
-                        <div class="col col-4">winner</div>
-                    </li>
-                    <% for (let i=0; i < registrations1.length; i++) { %>
-
-                        <% if (registrations1[i].completed && registrations1[i].winner) { %>
-                            <li class="table-header"
-                                style="background-color: white; color: #021928; font-weight: bold;">
-                                <div class="col col-2">
-                                    <%= i+1 %>
-                                </div>
-                                <div class="col col-3">
-                                    <%= registrations1[i].dateTime.toString().substring(0,26) %>
-                                </div>
-                                <div class="col col-3">
-                                    <%= registrations1[i].sportName %>
-                                </div>
-                                <div style="background-color: #bbc9d2;" class=" col col-4">
-                                    <%= registrations1[i].winner %>
-                                </div>
-                            </li>
-                            <% } %>
+            <% if (locals.registrations1) { %>             
+                <div style="text-align: center;" >
+                    <h2>SOLO GAME WINNER</h2>
+                    <ul class="responsive-table">
+                        <li class="table-header" style="color: white;">
+                            <div class="col col-2">NO</div>
+                            <div class="col col-3">Date&Time</div>
+                            <div class="col col-3">Game</div>
+                            <div class="col col-4">winner</div>
+                        </li>
+                        <% if (registrations1.length == 0) { %>
+                          <h1 style="text-align: center;">No Matches Scheduled</h1>
+                        <% } %>
+                        <% for (let i=0; i < registrations1.length; i++) { %>
+    
+                            <% if (registrations1[i].completed && registrations1[i].winner) { %>
+                                <li class="table-header"
+                                    style="background-color: white; color: #021928; font-weight: bold;">
+                                    <div class="col col-2">
+                                        <%= i+1 %>
+                                    </div>
+                                    <div class="col col-3">
+                                        <%= registrations1[i].dateTime.toString().substring(0,26) %>
+                                    </div>
+                                    <div class="col col-3">
+                                        <%= registrations1[i].sportName %>
+                                    </div>
+                                    <div style="background-color: #bbc9d2;" class=" col col-4">
+                                        <%= registrations1[i].winner %>
+                                    </div>
+                                </li>
                                 <% } %>
-                </ul>
-            </div>
-
-            <div style="text-align: center;" >
-                <h2>TEAM GAME WINNER</h2>
-                <ul class="responsive-table">
-                    <li class="table-header" style="color: white;">
-                        <div class="col col-1">NO</div>
-                        <div class="col col-2">Game Name</div>
-                        <div class="col col-3">Date&Time</div>
-                        <div class="col col-2">Team 1</div>
-                        <div class="col col-2">Team 2</div>
-                        <div class="col col-2">Winner</div>
-                    </li>
-                    <% for (let i=0; i < registrations2.length; i++) { %>
-                        <% if (registrations2[i].completed && registrations2[i].winner) { %>
-                            <li class="table-header"
-                                style="background-color: white; color: #021928; font-weight: bolder;">
-                                <div class="col col-1">
-                                    <%= i %>
-                                </div>
-                                <div class="col col-2">
-                                    <%= registrations2[i].sportName %>
-                                </div>
-                                <div class="col col-3">
-                                    <%= registrations2[i].dateTime.toString().substring(0,26) %>
-                                </div>
-                                <div class="col col-2">
-                                    <%= registrations2[i].team1 %>
-                                </div>
-                                <div class="col col-2">
-                                    <%= registrations2[i].team2 %>
-                                </div>
-                                <div style="background-color: #bbc9d2;" class="col col-2">
-                                    <%= registrations2[i].winner %>
-                                </div>
-                            </li>
-                            <% } %>
+                                    <% } %>
+                    </ul>
+                </div>
+            <% } %>
+            <% if (locals.registrations2) { %>             
+                <div style="text-align: center;" >
+                    <h2>TEAM GAME WINNER</h2>
+                    <ul class="responsive-table">
+                        <li class="table-header" style="color: white;">
+                            <div class="col col-1">NO</div>
+                            <div class="col col-2">Game Name</div>
+                            <div class="col col-3">Date&Time</div>
+                            <div class="col col-2">Team 1</div>
+                            <div class="col col-2">Team 2</div>
+                            <div class="col col-2">Winner</div>
+                        </li>
+                        <% if (registrations2.length == 0) { %>
+                            <h1 style="text-align: center;">No Matches Scheduled</h1>
+                          <% } %>
+                        <% for (let i=0; i < registrations2.length; i++) { %>
+                            <% if (registrations2[i].completed && registrations2[i].winner) { %>
+                                <li class="table-header"
+                                    style="background-color: white; color: #021928; font-weight: bolder;">
+                                    <div class="col col-1">
+                                        <%= i %>
+                                    </div>
+                                    <div class="col col-2">
+                                        <%= registrations2[i].sportName %>
+                                    </div>
+                                    <div class="col col-3">
+                                        <%= registrations2[i].dateTime.toString().substring(0,26) %>
+                                    </div>
+                                    <div class="col col-2">
+                                        <%= registrations2[i].team1 %>
+                                    </div>
+                                    <div class="col col-2">
+                                        <%= registrations2[i].team2 %>
+                                    </div>
+                                    <div style="background-color: #bbc9d2;" class="col col-2">
+                                        <%= registrations2[i].winner %>
+                                    </div>
+                                </li>
                                 <% } %>
-
-                </ul>
-            </div>
+                                    <% } %>
+    
+                    </ul>
+                </div>
+            <% } %>
         </div>
 
         </section>

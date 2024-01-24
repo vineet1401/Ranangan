@@ -25,52 +25,62 @@ const getSchedulePage = async(req, res)=>{
 
 const getCricketSchedule = async(req, res)=>{
     const teamschdeule = await teamScheduleModel.find({sportName : "Cricket"});
-    return res.render("schedule.ejs", {schedule:teamschdeule, image:images.cricket, sportName : "Cricket"});
+        const teamGames = await teamScheduleModel.find({sportName:"Cricket"})
+    return res.render("schedule.ejs", {registrations2:teamGames, schedule:teamschdeule, image:images.cricket, sportName : "Cricket"});
 }
 
 const getFootballSchedule = async(req, res)=>{
     const teamschdeule = await teamScheduleModel.find({sportName : "Football"});
-    return res.render("schedule.ejs", {schedule:teamschdeule, image:images.football, sportName : "Football"});
+        const teamGames = await teamScheduleModel.find({sportName:"Football"})
+    return res.render("schedule.ejs", {registrations2:teamGames, schedule:teamschdeule, image:images.football, sportName : "Football"});
 }
 
 const getBasketballSchedule = async(req, res)=>{
     const teamschdeule = await teamScheduleModel.find({sportName : "Basketball"});
-    return res.render("schedule.ejs", {schedule:teamschdeule, image:images.basketball, sportName : "Basketball"});
+        const teamGames = await teamScheduleModel.find({sportName:"Basketball"})
+    return res.render("schedule.ejs", {registrations2:teamGames, schedule:teamschdeule, image:images.basketball, sportName : "Basketball"});
 }
 
 const getTableTennisSchedule = async (req, res)=>{
     const teamschdeule = await teamScheduleModel.find({sportName : "Table Tennis"});
-    return res.render("schedule.ejs", {schedule:teamschdeule, image:images.tabletennis, sportName : "Table Tennis"});
+        const teamGames = await teamScheduleModel.find({sportName:"Table Tennis"})
+    return res.render("schedule.ejs", {registrations2:teamGames, schedule:teamschdeule, image:images.tabletennis, sportName : "Table Tennis"});
 }
 
 const getKhoKhoSchedule = async(req, res)=>{
     const teamschdeule = await teamScheduleModel.find({sportName : "Kho-Kho"});
-    return res.render("schedule.ejs", {schedule:teamschdeule, image:images.khokho, sportName : "Kho-Kho"});
+        const teamGames = await teamScheduleModel.find({sportName:"Kho-Kho"})
+    return res.render("schedule.ejs", {registrations2:teamGames, schedule:teamschdeule, image:images.khokho, sportName : "Kho-Kho"});
 }
 
 const getKabaddiSchedule = async(req, res)=>{
     const teamschdeule = await teamScheduleModel.find({sportName : "Kabaddi"});
-    return res.render("schedule.ejs", {schedule:teamschdeule, image:images.kabaddi, sportName : "Kabaddi"});
+        const teamGames = await teamScheduleModel.find({sportName:"Kabaddi"})
+    return res.render("schedule.ejs", {registrations2:teamGames, schedule:teamschdeule, image:images.kabaddi, sportName : "Kabaddi"});
 }
 
 const getChessSchedule = async(req, res)=>{
     const teamschdeule = await teamScheduleModel.find({sportName : "Chess"});
-    return res.render("schedule.ejs", {schedule:teamschdeule, image:images.chess, sportName : "Chess"});
+        const teamGames = await teamScheduleModel.find({sportName:"Chess"})
+    return res.render("schedule.ejs", {registrations2:teamGames, schedule:teamschdeule, image:images.chess, sportName : "Chess"});
 };
 
 const getCarromSchedule = async(req, res)=>{
     const teamschdeule = await teamScheduleModel.find({sportName : "Carrom"});
-    return res.render("schedule.ejs", {schedule:teamschdeule, image:images.carrom, sportName : "Carrom"});
+        const teamGames = await teamScheduleModel.find({sportName:"Carrom"})
+    return res.render("schedule.ejs", {registrations2:teamGames, schedule:teamschdeule, image:images.carrom, sportName : "Carrom"});
 };
 
 const getBadmintonSchedule = async(req, res)=>{
     const teamschdeule = await teamScheduleModel.find({sportName : "Badminton"});
-    return res.render("schedule.ejs", {schedule:teamschdeule, image:images.badminton, sportName : "Badminton"});
+        const teamGames = await teamScheduleModel.find({sportName:"Badminton"})
+    return res.render("schedule.ejs", {registrations2:teamGames, schedule:teamschdeule, image:images.badminton, sportName : "Badminton"});
 }
 
 const getAthleticsSchedule = async(req, res)=>{
     const teamschdeule = await athleticScheduleModel.find({sportName : "Athletics"});
-    return res.render("schedule.ejs", {schedule:teamschdeule, image:images.athletics, sportName : "Athletics"});
+        const soloGames = await athleticScheduleModel.find({})
+    return res.render("schedule.ejs", {registrations1:SoloGames, schedule:teamschdeule, image:images.athletics, sportName : "Athletics"});
 }
 
 module.exports = {
