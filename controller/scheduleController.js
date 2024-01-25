@@ -2,16 +2,16 @@ const athleticScheduleModel = require("../models/athleticsSchema.js");
 const teamScheduleModel = require("../models/teamGameSchema.js")
 
 const images = {
-    cricket : "/img/banners/Cricket.png",
-    football : "/img/banners/Football.png",
-    basketball : "/img/banners/Basketball.png",
-    kabaddi : "/img/banners/Kabaddi.png",
-    khokho : "/img/banners/Kho-Kho.png",
-    chess : "/img/banners/Chess.png",
-    carrom : "/img/banners/Carrom.png",
-    badminton : "/img/banners/Badmintom.png",
-    tabletennis : "/img/banners/TableTennis.png",
-    athletics : "/img/banners/Athletics.png"
+    cricket : "/img/banners/Cricket.jpg",
+    football : "/img/banners/Football.jpg",
+    basketball : "/img/banners/Basketball.jpg",
+    kabaddi : "/img/banners/Kabaddi.jpg",
+    khokho : "/img/banners/Kho-Kho.jpg",
+    chess : "/img/banners/Chess.jpg",
+    carrom : "/img/banners/Carrom.jpg",
+    badminton : "/img/banners/Badmintom.jpg",
+    tabletennis : "/img/banners/TableTennis.jpg",
+    athletics : "/img/banners/Athletics.jpg"
 }
 
 const getSchedulePage = async(req, res)=>{
