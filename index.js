@@ -3,15 +3,14 @@ const cookieParser = require("cookie-parser");
 const path = require('path');
 const mongoose = require('mongoose');
 const env = require("dotenv").config()
-let session = require("express-session");
 let flash = require("connect-flash");
 const formidableMiddleware = require("express-formidable-v2");
 
 
 const checkAuthentication = require('./services/authentication.js');
 const homeRoutes = require("./routes/homeRoutes.js");
-const scheduleRoutes = require("./routes/scheduleRoutes.js");
-const dashboardRoutes = require("./routes/dashboardRoutes.js");
+// const scheduleRoutes = require("./routes/scheduleRoutes.js");
+// const dashboardRoutes = require("./routes/dashboardRoutes.js");
 
 const mongoURL = process.env.DATABASE_URL
 const port = process.env.WEBSITE_PORT || 4000;
@@ -35,9 +34,9 @@ app.use(express.json({ limit: "25mb" }));
 app.use(formidableMiddleware())
 
 // Home Routes
-app.use("/dashboard",checkAuthentication("token"), dashboardRoutes)
+// app.use("/dashboard",checkAuthentication("token"), dashboardRoutes)
 app.use("/", homeRoutes);
-app.use("/schedule", scheduleRoutes)
+// app.use("/schedule", scheduleRoutes)
 
 
 
