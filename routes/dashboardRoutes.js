@@ -27,20 +27,20 @@ const {
 
 
 
-router.get("/dashboard/", getDashboard);
-router.get("/dashboard/athletics", getAthleticPage);
-router.get("/dashboard/cricket", getCricketPage);
-router.get("/dashboard/football", getFootballPage);
-router.get("/dashboard/khokho", getkhokhoPage);
-router.get("/dashboard/kabaddi", getKabaddiPage);
-router.get("/dashboard/basketball", getBasketballPage);
-router.get("/dashboard/chess", getChessPage);
-router.get("/dashboard/carrom", getCarromPage);
-router.get("/dashboard/badminton", getBadmintonPage);
-router.get("/dashboard/tabletennis", getTableTennisPage);
+router.get("/", getDashboard);
+router.get("/athletics", getAthleticPage);
+router.get("/cricket", getCricketPage);
+router.get("/football", getFootballPage);
+router.get("/khokho", getkhokhoPage);
+router.get("/kabaddi", getKabaddiPage);
+router.get("/basketball", getBasketballPage);
+router.get("/chess", getChessPage);
+router.get("/carrom", getCarromPage);
+router.get("/badminton", getBadmintonPage);
+router.get("/tabletennis", getTableTennisPage);
 
-router.post("/dashboard/one/athletics", postAthleticSchedule);
-router.post("/dashboard/team/schedule",[
+router.post("/one/athletics", postAthleticSchedule);
+router.post("/team/schedule",[
   check('team1').notEmpty().withMessage('Team 1 is required'),
   check('team2')
     .notEmpty().withMessage('Team 2 is required')
@@ -52,15 +52,15 @@ router.post("/dashboard/team/schedule",[
     }),
 ], postTeamSchedule);
 
-router.get("/dashboard/team/cancel/:id", getCancelTeamGame)
-router.post("/dashboard/team/declare/:id", postTeamGameWinner)
-router.get("/dashboard/solo/cancel/:id", getCancelSoloGame)
-router.post("/dashboard/solo/declare/:id", postSoloGameWinner)
-router.get("/dashboard/contactissue", getContactIssuePage)
-router.get("/dashboard/resolve/:id", getResolveIssue)
-router.get('/dashboard/registrations', getRegistrationPage);
+router.get("/team/cancel/:id", getCancelTeamGame)
+router.post("/team/declare/:id", postTeamGameWinner)
+router.get("/solo/cancel/:id", getCancelSoloGame)
+router.post("/solo/declare/:id", postSoloGameWinner)
+router.get("/contactissue", getContactIssuePage)
+router.get("/resolve/:id", getResolveIssue)
+router.get('/registrations', getRegistrationPage);
 
-router.get("/dashboard/logout", logout);
+router.get("/logout", logout);
 
 
 module.exports = router;
