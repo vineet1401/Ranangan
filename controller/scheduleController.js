@@ -80,7 +80,7 @@ const getBadmintonSchedule = async(req, res)=>{
 const getAthleticsSchedule = async(req, res)=>{
     const teamschdeule = await athleticScheduleModel.find({sportName : "Athletics"});
         const soloGames = await athleticScheduleModel.find({})
-    return res.render("schedule.ejs", {registrations1:SoloGames, schedule:teamschdeule, image:images.athletics, sportName : "Athletics"});
+    return res.render("schedule.ejs", {registrations1:soloGames, schedule:teamschdeule, image:images.athletics, sportName : "Athletics"});
 }
 
 module.exports = {

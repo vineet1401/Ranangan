@@ -40,7 +40,7 @@ const postRegisterTeamForm = async (req, res) => {
             sportName
         });
         await newRegistration.save();
-        res.redirect("/");
+        res.status(200).send("<h1>Match Registered Successfull</h1> <br/> <a href='/'>Go Home</a>");
     } catch (error) {
         res.status(400).send("<h1>Try Again !!!</h1> ")
     }
@@ -58,7 +58,7 @@ const postRegisterSoloForm = async (req, res) => {
         });
         await newRegistration.save();
         // Render a thank you page or redirect as needed
-        res.redirect("/");
+        res.status(200).send("<h1>Match Registered Successfull</h1> <br/> <a href='/'>Go Home</a>");
     } catch (error) {
         console.error('Error saving to database:', error);
         // Handle the error (e.g., send an error response)
