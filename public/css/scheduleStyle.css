@@ -507,12 +507,7 @@ body {
   .active.fade-bottom {
     animation: fade-bottom 0.3s ease-in;
   }
-  .active.fade-left {
-    animation: fade-left 0.3s ease-in;
-  }
-  .active.fade-right {
-    animation: fade-right 0.3s ease-in;
-  }
+
   @keyframes fade-bottom {
     0% {
       transform: translateY(50px);
@@ -523,36 +518,12 @@ body {
       opacity: 1;
     }
   }
-  @keyframes fade-left {
-    0% {
-      transform: translateX(-100px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes fade-right {
-    0% {
-      transform: translateX(100px);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }.reveal{
+.reveal{
     position: relative;
-    transform: translateY(150px);
-    transform: translateX(150px);
     opacity: 0;
     transition: 1s all ease;
   }
   .reveal.active{
-    transform: translateY(0);
-    transform: translateX(0);
     opacity: 1;
   }
   

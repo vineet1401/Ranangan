@@ -8,7 +8,7 @@ body {
   background: #ffffff;
   font-family: "Open Sans", sans-serif;
   width: 100vw !important;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
 h1,
@@ -22,7 +22,7 @@ h6 {
 
 a {
   color: #454545;
-  transition: 0.3s;
+  transition: 0.8;
 }
 
 a:hover,
@@ -73,12 +73,13 @@ a:focus {
   position: relative;
   transition: 0.5s;
   z-index: 999;
+  width: 100vw;
 }
 
 .navbar.nav-sticky {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.614);
 }
 
@@ -156,6 +157,7 @@ a:focus {
   .navbar {
     padding: 15px;
     background: #343148 !important;
+    width: 100vw;
   }
 
   .navbar .navbar-brand span {
@@ -210,7 +212,7 @@ a:focus {
   color: #f7cac9;
   background: #343148;
   border-radius: 0;
-  transition: 0.3s;
+  transition: 0.8;
 }
 
 .about .about-text a.btn:hover {
@@ -241,7 +243,7 @@ a:focus {
   margin-bottom: 30px;
   padding: 30px;
   border: 1px solid rgba(0, 0, 0, 0.07);
-  transition: 0.3s;
+  transition: 0.8;
 }
 
 .service .service-item:hover,
@@ -272,7 +274,7 @@ a:focus {
   margin-bottom: 15px;
   font-size: 20px;
   font-weight: 600;
-  transition: 0.3s;
+  transition: 0.8;
 }
 
 .service .service-item:hover h3,
@@ -346,7 +348,7 @@ a:focus {
   color: #f7cac9;
   background: #343148;
   border-radius: 0;
-  transition: 0.3s;
+  transition: 0.8;
 }
 
 .contact .contact-form .btn:hover {
@@ -438,7 +440,7 @@ a:focus {
   margin-right: 15px;
   font-size: 20px;
   color: #ffffff;
-  transition: 0.3s;
+  transition: 0.8;
 }
 
 .footer .footer-social a:last-child i {
@@ -502,7 +504,7 @@ a:focus {
   background-clip: text;
   font-size: 200px;
   -webkit-text-fill-color: transparent;
-  background-size: 300%;
+  background-size: 100%;
   animation: animated_gradient_text 6s ease-in-out infinite;
   -moz-animation: animaanimated_gradient_textted_text 6s ease-in-out infinite;
   -webkit-animation: animated_gradient_text 6s ease-in-out infinite;
@@ -529,13 +531,7 @@ a:focus {
   opacity: 1;
 }
 .active.fade-bottom {
-  animation: fade-bottom 0.3s ease-in;
-}
-.active.fade-left {
-  animation: fade-left 0.3s ease-in;
-}
-.active.fade-right {
-  animation: fade-right 0.3s ease-in;
+  animation: fade-bottom 0.8 ease-in;
 }
 @keyframes fade-bottom {
   0% {
@@ -547,36 +543,13 @@ a:focus {
     opacity: 1;
   }
 }
-@keyframes fade-left {
-  0% {
-    transform: translateX(-100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fade-right {
-  0% {
-    transform: translateX(100px);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(0);
-    opacity: 1;
-  }
-}.reveal{
+.reveal{
   position: relative;
-  transform: translateY(150px);
-  transform: translateX(150px);
   opacity: 0;
   transition: 1s all ease;
 }
 .reveal.active{
-  transform: translateY(0);
-  transform: translateX(0);
+  transition: 1s all ease;
   opacity: 1;
 }
 
