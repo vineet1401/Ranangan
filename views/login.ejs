@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html>
-    
-    <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"
+        defer></script>
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Login</title>
@@ -85,108 +88,56 @@
             background-color: #fff;
             border-radius: 10px;
             box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-            position: relative;
-            overflow: hidden;
-            width: 768px;
-            max-width: 100%;
-            min-height: 480px;
+            width: 90vw;
+            padding: 20px;
         }
 
-        .form-container {
-            position: absolute;
-            top: 0;
-            height: 100%;
-        }
-
-        .log-in-container {
-            left: 0;
-            width: 50%;
-            z-index: 2;
-        }
-
-
-        .overlay-container {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            width: 50%;
-            height: 100%;
-        }
-
-
-        .overlay {
-            background: #FF416C;
-            background: -webkit-linear-gradient(to right, #FF4B2B, #FF416C);
-            background: linear-gradient(to right, #FF4B2B, #FF416C);
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-position: 0 0;
-            color: #FFFFFF;
-            position: relative;
-            left: -100%;
-            height: 100%;
-            width: 200%;
-        }
-
-        .overlay-panel {
-            position: absolute;
+        .login-form {
             display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            padding: 0 40px;
-            text-align: center;
-            top: 0;
-            height: 100%;
-            width: 50%;
-        }
-
-
-        .overlay-right {
-            right: 0;
-        }
-
-
-        .social-container {
-            margin: 50px 0;
-        }
-
-        .social-container a {
-            border: 1px solid #DDDDDD;
-            border-radius: 50%;
-            display: inline-flex;
             justify-content: center;
             align-items: center;
-            margin: 0 5px;
-            height: 40px;
-            width: 40px;
         }
+
+        .log-in-left {
+            flex:1;
+        }
+        .log-in-right {
+            flex:1;
+        }
+        .log-in-right img{
+            width: 100%;
+        }
+
+        @media screen and (max-width: 600px) {
+            .log-in-right{
+                display: none;
+            }
+        }
+
     </style>
 </head>
 
 <body>
     <div class="container" id="container">
-        <div class="form-container log-in-container">
-            <form action="/login" method="post">
+        <div class="login-form">
+            <form class="log-in-left" action="/login" method="post">
                 <% if (locals.error) { %>
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong><%= error %></strong>
+                        <strong>
+                            <%= error %>
+                        </strong>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                      </div>
-                <% } %>
-                <h1 style="margin-bottom: 20px;">LOGIN</h1>
-                <input name="username" type="text" placeholder="Username" />
-                <input name="password" type="password" placeholder="Password" />
-                <a href="#">Forgot your password?</a>
-                <button type="submit">Log In</button>
-                <a href="/">Go Home</a>
+                    </div>
+                    <% } %>
+                        <h1 style="margin-bottom: 20px;">LOGIN</h1>
+                        <input name="username" type="text" placeholder="Username" />
+                        <input name="password" type="password" placeholder="Password" />
+                        <a href="#">Forgot your password?</a>
+                        <button type="submit">Log In</button>
+                        <a href="/">Go Home</a>
             </form>
-        </div>
-        <div class="overlay-container">
-            <div class="overlay">
-                <div class="overlay-panel overlay-right">
-                   <img src="/images/logo.jpg" alt="" height="100%">
-                </div>
+            <div class="log-in-right">
+                <img src="/images/logo.jpg" alt="" height="100%">
             </div>
         </div>
     </div>
