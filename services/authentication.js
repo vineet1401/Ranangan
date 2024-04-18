@@ -5,7 +5,7 @@ const checkAuthentication = (cookiename)=>{
         const token = req.cookies[cookiename];
 
         if(!token){
-            res.redirect("/login");
+            return res.redirect("/login");
         }
         try{
             const payload = validateToken_JWT(token);
